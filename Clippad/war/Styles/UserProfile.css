@@ -1,0 +1,44 @@
+#wrapper {
+	width: 70%;
+	margin: 20px auto;
+}
+
+#header {
+	width: 100%;
+	margin: auto;
+}
+
+#error {
+	color: #ff0000;
+}
+
+#details {
+	width: 100%;
+	margin: auto;
+}
+
+#user-form {
+	display: table;
+	width: 100%;
+}
+
+#user-form p {
+	display: table-row;
+	margin: 0;
+}
+
+#user-form label {
+	display: table-cell;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+
+#user-form input {
+	display: table-cell;
+	margin: 0;
+	padding: 0;
+	border: 2px solid;
+	border-radius: 3px;
+	text-align: left;
+}
