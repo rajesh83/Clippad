@@ -24,11 +24,14 @@
 			<p> Creating a Clippad profile is very easy! Just sign-up providing a few basic details (No contact information required; Just your name 
 			and new user credentials). Bookmark the login page with your credentials saved in your browser, and you can access all your favorite text clips/notes in a flash from anywhere! All 
 			the text clips/notes that you enter are stored after encryption (with a key derived from your password, which itself is stored only after hashing). The only details visible at the back-end
-			are your user id and name. So your profile is totally secure here.          
-					
-			<p> This application was developed by Rajesh Ramakrishnan. Please contact me @ rajesh.helloworld@gmail.com if you face any issues with this or have any suggestions for improvement.
+			are your user id and name. So your profile is totally secure here. 
 			
-			<p> <a href=UserProfile.jsp?mode=signup> Sign-up </a> or <a href=Login.jsp> Sign-in </a>		
+			<p> For each note/clip you can enter an optional title. The UserClips page displays the title of all the clips stored. But the copy button copies the clip-content 
+			and not the title. If a title is not entered for a note the first line of the note-content will be taken as the title and shown in the listing.         
+					
+			<p><i>This application was developed by Rajesh Ramakrishnan. Please contact me @ rajesh.helloworld@gmail.com if you face any issues with this or have any suggestions for improvement.</i>
+			
+			<p class="urls" ><a href=UserProfile.jsp?mode=signup> Sign-up </a> or <a href=Login.jsp> Sign-in </a>		
 			
 			</form>
 		</div>

@@ -33,7 +33,7 @@ public class Signup extends HttpServlet {
 		ub.setUser(user);
 		ub.setPswd(pswd);
 		ub.setName(name);
-		ub.setClips(new ArrayList<String>());
+		ub.setClipText(new ArrayList<String>());
 		
 		result = da.insertUser(ub);
 		if (result.startsWith("Error")){

@@ -19,19 +19,49 @@ public class Update extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
+		int clipIndex;
+		String clipIndexSring, mode="";
 		UserBean ub;
-		String result=null;
-		String[] clips;
 
 		HttpSession session = req.getSession();
 		DataAccess da = new DataAccess();
-		clips = req.getParameterValues("clip");
+		
+		mode = req.getParameter("mode");
 		ub = (UserBean) session.getAttribute("user");
-		ub.clips = Arrays.asList(clips);
-		result = da.updateClips(ub);
-		session.setAttribute("user",ub);
-		session.setAttribute("count",ub.clips.size());
-		req.getRequestDispatcher("/UserClips.jsp").forward(req, resp);
-	}
+		
+		switch(mode){
+		case "list":
+			String[] clips = req.getParameterValues("clip");
+			ub.clipText = Arrays.asList(clips);
+			break;
+			
+		case "clip":
+			clipIndexSring = req.getParameter("clipIndex");
+			clipIndex = Integer.parseInt(clipIndexSring);
+			String clipTitle = req.getParameter("clipTitle");
+			String clipText = req.getParameter("clipText");
+			if(clipIndex == ub.getClipText().size()){
+			ub.getClipTitle().add(clipTitle);
+			ub.getClipText().add(clipText);
+			}
+			else {
+				ub.getClipTitle().set(clipIndex, clipTitle);
+				ub.getClipText().set(clipIndex, clipText);	
+			}
+			break;
+			
+		case "delete":
+			clipIndexSring = req.getParameter("clipIndex");
+			clipIndex = Integer.parseInt(clipIndexSring);
+			ub.getClipTitle().remove(clipIndex);
+			ub.getClipText().remove(clipIndex);			
+			break;				
+		}
 
+		da.updateClips(ub);
+		session.setAttribute("user",ub);
+		session.setAttribute("count",ub.clipText.size());
+		resp.sendRedirect("/UserClips.jsp");
+
+	}
 }

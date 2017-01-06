@@ -14,5 +14,13 @@
 	width: 100%;
 	height: 75%;
 	margin: auto;
-	text-alignment: left;
+	text-align: justify;
+}
+
+p {
+	padding: 0;
+}
+
+.urls {
+	text-align: center;
 }

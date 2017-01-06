@@ -14,16 +14,16 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
+			<p><a href=/>Home</a></p>		
 			<h1>Log in to Clippad..</h1>
 		</div>
 		<div id="details">
 			<p>
 			<form id="login-form" name="loginform" method="post" action="Login">
-				<div id=error>${login.error}</div>
+				<div id=message class="${login.msgClass}">${login.message}</div>
 				<p>
-					<span class="lable">Username</span> <input type="text" name="user"
-						value=${login.user}> <br> 
-					<span class="lable">Password</span>	<input type="password" name="pswd"><br>
+					 <li> <input type="text" name="user"	placeholder="Username" value=${login.user}> <br>
+					 <li> <input type="password" name="pswd" placeholder="Password">
 				<p>
 					<input type="submit" value="login" onClick="return validate();">
 				<p>

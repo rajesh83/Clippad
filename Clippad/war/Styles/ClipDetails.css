@@ -1,0 +1,47 @@
+#wrapper {
+	width: 70%;
+	height: 50%;
+	margin: 0 auto;
+}
+
+#profile {
+	width: 10%;
+	height: 100%;
+	margin: 0 auto;
+	float: right;
+	text-align: left;
+}
+
+textarea {
+	border: 2px solid;
+	border-radius: 5px;
+	height: 50%;
+	width: 50%;
+}
+
+textarea[readonly] {
+	background-color: #ebebeb;
+}
+
+input, button {
+	border: 2px solid;
+	border-radius: 3px;	
+}
+
+input {
+	width: 50%;
+}
+
+input[readonly] {
+	background-color: #ebebeb;
+}
+
+button {
+	width:4%;
+	background-color:#bababa;
+}
+
+li {
+	list-style: none; /* Remove list bullets */
+	margin: 5px 0;
+}

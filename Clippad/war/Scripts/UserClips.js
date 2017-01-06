@@ -4,56 +4,42 @@
 
 function addAnotherClip(){
 	
-	var clipList = document.getElementById("clipList");
-	var newClipLi = document.createElement("li");
-	var newClip = document.createElement("textarea");
-	
-	newClip.id = "newClip";
-	newClip.type = "text";
-	newClip.name = "clip";
-	
-	newClipLi.appendChild(newClip);
-	clipList.appendChild(newClipLi);	
-	newClip.focus();
-	addSaveButton();	
+	document.location.href = "ClipDetails?index=new";
 }
 
-function editClip(clipId){
-	var clip = document.getElementById(clipId);
-	clip.removeAttribute("readOnly");
-	addSaveButton();	
-}
-
-function deleteClip(listItemId){
-	
-	var del = confirm("Do you really want to delete this item?");
-	if(del){
-		var list = document.getElementById("clipList");
-		var listItem = document.getElementById(listItemId);
-		list.removeChild(listItem);
-		addSaveButton();
-	}
-}
-
-function copyClip(clipId){
+function copyClip(clipIndex){
 	var msg = document.getElementById("msg");
-	var clip = document.getElementById(clipId);
+	var clip = document.getElementById("clipText" + clipIndex);
+//	alert(clip.value)
+//	clip.focus();
+	clip.hidden = false;
 	clip.select();
+//	alert(document.getSelection());
 	try{
 		var result = document.execCommand('copy');
 		console.log(result);
+//		alert(result);
 		if(result){
-			msg.innerHTML = "Clip-item copied to clipboard..";
+			msg.innerHTML = "Clip content copied to clipboard..";
 		}
 		else {
+//			alert(result);
 			msg.innerHTML = "Unsupported browser-operation! Copy selected text manually..";
 			msg.style.color = "red";
 		}
 	}
 	catch(err){
+		alert("exception" + err);
 		msg.innerHTML = "Unsupported browser-operation! Copy selected text manually..";
 		msg.style.color = "red";
 	}	
+	finally{
+		clip.hidden = true;
+	}
+}
+
+function viewClip(clipIndex){
+	document.location.href = "ClipDetails?index=" + clipIndex;
 }
 
 function addSaveButton(){

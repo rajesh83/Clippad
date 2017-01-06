@@ -27,12 +27,15 @@ public class Logoff extends HttpServlet {
 		ub = (UserBean) session.getAttribute("user");		
 		if(ub!=null){
 			session.removeAttribute("user");
-			lb.setError("User logged off successfully..");
+			lb.setMessage("User logged off successfully..");
+			lb.setMsgClass("InfoMsg");
 		}
 		else{
-			lb.setError("Session timed out.Please re-login..");
+			lb.setMessage("Session timed out.Please re-login..");
+			lb.setMsgClass("ErrorMsg");
 		}	
 		req.setAttribute("login", lb);
 		req.getRequestDispatcher("Login.jsp").forward(req, resp);
+
 	}	
 }

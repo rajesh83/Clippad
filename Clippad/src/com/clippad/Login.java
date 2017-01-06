@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
 		pswd = req.getParameter("pswd");
 		
 		if((user == null) || (pswd == null)) {
-			req.getRequestDispatcher("Login.jsp").forward(req, resp);
+			resp.sendRedirect("Login.jsp");
 		}
 		else {
 			lb = new LoginBean();
@@ -39,11 +39,11 @@ public class Login extends HttpServlet {
 				if(lb.isLoggedin()){
 					HttpSession session = req.getSession();
 					session.setAttribute("user", ub);
-					session.setAttribute("count",ub.clips.size());
-					req.getRequestDispatcher("UserClips.jsp").forward(req, resp);
+					session.setAttribute("count",ub.clipText.size());
+					resp.sendRedirect("UserClips.jsp");
 				}
 				else {
-					req.setAttribute("login", lb);		
+					req.setAttribute("login", lb);	
 					req.getRequestDispatcher("Login.jsp").forward(req, resp);
 				}
 			} catch (Exception e) {

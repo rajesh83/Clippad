@@ -4,6 +4,12 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	<context-param>
+		<description>Admininstrator's email-id</description>
+		<param-name>admin-email</param-name>
+		<param-value>rajesh.helloworld@gmail.com</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>Login</servlet-name>
 		<servlet-class>com.clippad.Login</servlet-class>
@@ -16,6 +22,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>Update</servlet-name>
 		<servlet-class>com.clippad.Update</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ClipDetails</servlet-name>
+		<servlet-class>com.clippad.ClipDetails</servlet-class>
+	</servlet>	
 	<servlet>
 		<servlet-name>Logoff</servlet-name>
 		<servlet-class>com.clippad.Logoff</servlet-class>
@@ -32,6 +42,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>Update</servlet-name>
 		<url-pattern>/Update</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ClipDetails</servlet-name>
+		<url-pattern>/ClipDetails</url-pattern>
+	</servlet-mapping>	
 	<servlet-mapping>
 		<servlet-name>Logoff</servlet-name>
 		<url-pattern>/Logoff</url-pattern>

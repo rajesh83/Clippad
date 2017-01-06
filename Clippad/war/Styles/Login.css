@@ -10,8 +10,12 @@
 	margin: auto;
 }
 
-#error {
+.ErrorMsg {
 	color: #ff0000;
+}
+
+.InfoMsg {
+	color: #0b05af;
 }
 
 #details {
@@ -20,8 +24,10 @@
 	margin: auto;
 }
 
-.lable {
-	font: bold;
+
+li {
+	list-style: none; /* Remove list bullets */
+	margin: 4px 0;
 }
 
 input {

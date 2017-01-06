@@ -38,23 +38,28 @@ public class DataAccess {
 				ub.setPswd(pswd);
 				ub.setUser(userid);
 				ub.setName((String) user.getProperty("name"));
-				List clips = (List) user.getProperty("clips");
-				if(clips==null){
-					ub.setClips(new ArrayList<String>());
+				List clipTexts = (List) user.getProperty("clipTexts");
+				List clipTitles = (List) user.getProperty("clipTitles");
+				if(clipTexts==null){
+					ub.setClipText(new ArrayList<String>());
+					ub.setClipTitle(new ArrayList<String>());
 				}
 				else {
-					ub.setClips(decryptClips(clips,pswd));
+					ub.setClipText(decryptClips(clipTexts,pswd));
+					ub.setClipTitle(decryptClips(clipTitles,pswd));
 				}
 			}
 			else {
 				lb.setLoggedin(false);
-				lb.setError("Wrong password; please re-enter..");			
+				lb.setMessage("Wrong password; please re-enter..");	
+				lb.setMsgClass("ErrorMsg");
 			}
 		} catch (EntityNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			lb.setLoggedin(false);
-			lb.setError("Invalid user-id; please re-enter..");
+			lb.setMessage("Invalid user-id; please re-enter..");
+			lb.setMsgClass("ErrorMsg");
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,7 +116,8 @@ public class DataAccess {
 		
 		try {
 			user = datastore.get(userKey);
-			user.setProperty("clips", encryptClips(ub.getClips(),ub.getPswd()));			
+			user.setProperty("clipTexts", encryptClips(ub.getClipText(),ub.getPswd()));	
+			user.setProperty("clipTitles", encryptClips(ub.getClipTitle(),ub.getPswd()));
 	        datastore.put(user);
 	        
 	        return "Success.User-clips updated";

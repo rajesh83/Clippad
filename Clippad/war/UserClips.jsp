@@ -22,24 +22,30 @@
 	  	<a href="Logoff">logoff<a>
 	  </div>
 
-	  <div id="details">			
+	  <div id="details">	
+	  	<p><a href=/>Home</a></p>		
 	  	<p> Hello <b>${user.name}</b>! </p>					
-		<p> You have <b>${count}</b> stored clip-items:- </p>
+		<p> You have <b>${count}</b> stored clip-items. Click on any to view in detail.. </p>
+
 		<p> <label id="msg"> </label> </p>
-		<form name="clipsForm" id="clipsForm" method="post" action="Update">
+
+		<form name="clipsForm" id="clipsForm" method="post" action="Update?mode=list">
 			<ul id="clipList">
-				<c:forEach var="clipItem" items="${user.clips}" varStatus="clip">
-				    <li id="list${clip.index}"> 
-				    	<img src="Images/copy-icon.png" height="16" width="16" alt="Copy" title="Copy" onClick="return copyClip('clip${clip.index}');">
-				    	<textarea id="clip${clip.index}" rows="1" cols="30" name="clip" readOnly>${fn:escapeXml(clipItem)}</textarea> 
-				    	<img src="Images/edit-icon.png" height="16" width="16" alt="Edit" title="Edit" onClick="return editClip('clip${clip.index}');">
-				    	<img src="Images/dustbin-icon.png" height="16" width="16" alt="Delete" title="Delete" onClick="return deleteClip('list${clip.index}');">
+				<c:forEach var="clipItem" items="${user.clipTitle}" varStatus="clip">
+				  
+				    <li id="list${clip.index}"> 				    	
+				    	<img src="Images/copy-icon.png" height="16" width="16" alt="Copy" title="Copy" onClick="return copyClip(${clip.index});">
+				    	<input type="text" id="clipTitle${clip.index}" name="clipTitle" value="${fn:escapeXml(clipItem)}" readOnly onClick="return viewClip(${clip.index})">
+				    	<textarea hidden id="clipText${clip.index}" name="clipText">${fn:escapeXml(user.clipText[clip.index])}</textarea> 
 				    </li> 
+				   
 				</c:forEach>
 			</ul>	
 		</form>		
-		<button onClick="return addAnotherClip();">Add a clip</button>	  	
-	  	</div>	
+
+		<button onClick="return addAnotherClip();">New clip</button>	  	
+
+	  </div>	
 	</div>
 
 </body>

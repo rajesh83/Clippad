@@ -6,7 +6,8 @@ public class LoginBean {
 	private String user = null;
 	private String pswd = null;
 	private boolean isLoggedin = false;
-	private String error = null;
+	private String message = null;
+	private String msgClass = null;
 	
 	public String getUser() {
 		return user;
@@ -20,11 +21,17 @@ public class LoginBean {
 	public void setPswd(String pswd) {
 		this.pswd = pswd;
 	}	
-	public String getError() {
-		return error;
+	public String getMessage() {
+		return message;
 	}
-	public void setError(String error) {
-		this.error = error;
+	public void setMessage(String error) {
+		this.message = error;
+	}
+	public String getMsgClass() {
+		return msgClass;
+	}
+	public void setMsgClass(String msgClass) {
+		this.msgClass = msgClass;
 	}
 	public boolean isLoggedin() {
 		return isLoggedin;
