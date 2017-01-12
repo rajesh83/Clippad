@@ -31,8 +31,10 @@ public class Update extends HttpServlet {
 		
 		switch(mode){
 		case "list":
-			String[] clips = req.getParameterValues("clip");
-			ub.clipText = Arrays.asList(clips);
+			String[] clipTitles = req.getParameterValues("clipTitle");
+			String[] clipTexts = req.getParameterValues("clipText");
+			ub.clipTitle = Arrays.asList(clipTitles);
+			ub.clipText = Arrays.asList(clipTexts);
 			break;
 			
 		case "clip":
@@ -41,8 +43,8 @@ public class Update extends HttpServlet {
 			String clipTitle = req.getParameter("clipTitle");
 			String clipText = req.getParameter("clipText");
 			if(clipIndex == ub.getClipText().size()){
-			ub.getClipTitle().add(clipTitle);
-			ub.getClipText().add(clipText);
+				ub.getClipTitle().add(clipTitle);
+				ub.getClipText().add(clipText);
 			}
 			else {
 				ub.getClipTitle().set(clipIndex, clipTitle);

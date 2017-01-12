@@ -12,8 +12,8 @@ public class UserBean implements Serializable  {
 	private String pswd = null;
 	private String name = null;
 	
-	List<String> clipTitle = null;
-	List<String> clipText = null;
+	List<String> clipTitle = new ArrayList<String>();
+	List<String> clipText = new ArrayList<String>();
 	
 	public String getUser() {
 		return user;
@@ -36,8 +36,8 @@ public class UserBean implements Serializable  {
 	public List<String> getClipText() {
 		return clipText;
 	}
-	public void setClipText(List clips) { 
-		this.clipText = clips;
+	public void setClipText(List<String> clipText) { 
+		this.clipText = clipText;
 	}
 	public List<String> getClipTitle() {
 		return clipTitle;

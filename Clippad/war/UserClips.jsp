@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body onLoad="return onLoad()">
 
 	<div id="wrapper">
 	
@@ -27,23 +27,25 @@
 	  	<p> Hello <b>${user.name}</b>! </p>					
 		<p> You have <b>${count}</b> stored clip-items. Click on any to view in detail.. </p>
 
-		<p> <label id="msg"> </label> </p>
+		<p> <label id="msg"></label> </p>
 
 		<form name="clipsForm" id="clipsForm" method="post" action="Update?mode=list">
 			<ul id="clipList">
 				<c:forEach var="clipItem" items="${user.clipTitle}" varStatus="clip">
 				  
 				    <li id="list${clip.index}"> 				    	
-				    	<img src="Images/copy-icon.png" height="16" width="16" alt="Copy" title="Copy" onClick="return copyClip(${clip.index});">
+				    	<img src="Images/copy-archive.png" height="16" width="16" alt="Copy" title="Copy" onClick="return copyClip(${clip.index});">
 				    	<input type="text" id="clipTitle${clip.index}" name="clipTitle" value="${fn:escapeXml(clipItem)}" readOnly onClick="return viewClip(${clip.index})">
 				    	<textarea hidden id="clipText${clip.index}" name="clipText">${fn:escapeXml(user.clipText[clip.index])}</textarea> 
+				    	<img src="Images/Arrow_Upward.png" height="16" width="16" alt="Move Up" title="Move up" onClick="return moveClip('Up', ${clip.index});">
+				    	<img src="Images/Arrow_Download.png" height="16" width="16" alt="Move Down" title="Move down" onClick="return moveClip('Down', ${clip.index});">
 				    </li> 
 				   
 				</c:forEach>
 			</ul>	
 		</form>		
 
-		<button onClick="return addAnotherClip();">New clip</button>	  	
+		<button id="newClipButton" onClick="return addAnotherClip();">New clip</button>	  	
 
 	  </div>	
 	</div>

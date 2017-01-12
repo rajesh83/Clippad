@@ -6,7 +6,6 @@ var clipTitle;
 var form;
 
 function onLoad(){	
-//	alert("onload");
 	form = document.getElementById("clipsForm");
 	clipText = document.getElementById("clipText");
 	clipTitle = document.getElementById("clipTitle");
@@ -35,7 +34,6 @@ function editMode(editSaveButton){
 	editSaveButton.innerHTML = "Save";
 	backCancelButton.innerHTML = "Cancel";
 	backCancelButton.onclick = cancelViewEdit;
-//	editSaveButton.type="submit";
 	removeDeleteButton();
 	removeCopyButton();		
 }
@@ -51,18 +49,16 @@ function editSaveClip(editSaveButton){
 }
 
 function saveClip(){
-//	alert("saveClip");
+
 	editSaveButton.type="submit";
-//	form.submit();
 }
 
 function backtoClips(){
-//	alert("back");
 	document.location.href = "UserClips.jsp";
 }
 
 function cancelViewEdit(){
-//	alert("cancel");
+
 	var confirmCancel = confirm("Would you like to cancel the edits made?");
 	if(confirmCancel){
 		if(newClip){
@@ -119,7 +115,7 @@ function removeCopyButton(){
 }	
 
 function onSubmit(event){
-//	alert("onsubmit");
+
 	if(!clipText.value){
 		event.preventDefault();
 		alert("You can't save an empty note!");
@@ -127,6 +123,6 @@ function onSubmit(event){
 	}
 	if(!clipTitle.value){
 		clipTitle.value = (clipText.value).split('\n')[0];
-//		alert(clipTitle.value);
+
 	}
 }
